@@ -20,7 +20,7 @@ src/minecraft/net/minecraft/src/*.java
 !src/minecraft/net/minecraft/src/BlockStairs.java
 !src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
 !src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
-
+AnnoyanceFix.zip
 
 # Allow server.properties
 !jars/server.properties

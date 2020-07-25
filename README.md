@@ -1,16 +1,25 @@
-# AnnoyanceFix
+# AnnoyanceFix for Minecraft beta 1.7.3
 _Now using modloader!_
 
-## Installation using MultiMC:
+![image](https://i.imgur.com/TyufQHz.jpg)
 
-1. Download modloader: https://github.com/coffeenotfound/ModloaderFix-b1.7.3/releases
-2. Download this mod: https://github.com/2zqa/AnnoyanceFix/releases
-3. Create or edit your beta 1.7.3 instance in MultiMC
-4. Click "Add to minecraft.jar"
-5. Select modloader and annoyancefix
+List of fixes:
+
+- Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors and rails
+- Axes are now effective against: crafting tables, wooden stairs, fences and wooden doors
+- Fences are now placeable in air
+- Stairs now drop themselves
+
+## Installation using MultiMC
+
+1. Download Modloader: https://github.com/coffeenotfound/ModloaderFix-b1.7.3/releases/download/v1.0.0/ModLoader.Fix.b1.7.3-1.0.0.jar
+2. Download this mod: https://github.com/2zqa/AnnoyanceFix/releases/latest/download/AnnoyanceFix.zip
+3. Create or edit your beta 1.7.3 instance
+4. Click "Add to minecraft.jar" and select the Modloader and AnnoyanceFix files
 6. Run and enjoy! 👍
 
 ## Contributing
+If you would like to contribute, nice! The aim of this mod is to fix simple issues, like tool efficiency and unexplainable behavior of some blocks... Having played for a while now, this mod will probably address most problems you have encountered. If you do not know code, feel free to [create an issue](https://github.com/2zqa/AnnoyanceFix/issues/new).
 
 1. Download 1.7.3-LTS (MCP fork): `https://github.com/ModificationStation/1.7.3-LTS/`
 2. Fork this repository
@@ -24,3 +33,4 @@ _Now using modloader!_
 10. Create a pull request when done
 
 TIP: Use the createmod script to automatically recompile, reobfuscate and create a zip for the mod.
+
