@@ -1,0 +1,51 @@
+# Block folders that belong to MCP  
+jars/
+logs/
+reobf/
+temp/
+bin/
+
+conf/
+docs/
+eclipse/
+runtime/
+notes.md
+
+# AnnoyanceFix related stuff
+src/minecraft_server
+src/minecraft/net/minecraft/client
+src/minecraft/net/minecraft/isom
+src/minecraft/net/minecraft/src/*.java
+!src/minecraft/net/minecraft/src/BlockFence.java
+!src/minecraft/net/minecraft/src/BlockStairs.java
+!src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
+!src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
+
+
+# Allow server.properties
+!jars/server.properties
+
+# Block compiled Python
+*.pyc
+
+# Block downloaded files
+runtime/bin/pypy*
+!runtime/bin/
+
+# Block .idea folder
+.idea/
+
+# Block python runtime.
+runtime/bin/python/
+
+# Block command file.
+runtime/command
+
+# Block scripts in the root folder except setup.* and createmod.*
+*.bat
+*.sh
+!createmod.sh
+!createmod.bat
+
+# Block .iml files 
+*.iml
