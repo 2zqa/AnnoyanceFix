@@ -5,8 +5,8 @@ _Now using modloader!_
 
 List of fixes:
 
-- Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors and rails
-- Axes are now effective against: crafting tables, wooden stairs, fences and wooden doors
+- Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors, rails, dispensers and stone pressure plates
+- Axes are now effective against: crafting tables, wooden stairs, fences, wooden doors, ladders, signs, pumpkins and wooden pressure plates
 - Fences are now placeable in air
 - Stairs now drop themselves
 
@@ -18,8 +18,12 @@ List of fixes:
 4. Click "Add to minecraft.jar" and select the Modloader and AnnoyanceFix files
 6. Run and enjoy! 👍
 
+## Feedback
+
+The aim of this mod is to fix simple issues, like tool efficiency and unexplainable/unapologetic behavior of some blocks. I.e. bugfixes, not new features! Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/gitpoint/git-point/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
+
 ## Contributing
-If you would like to contribute, nice! The aim of this mod is to fix simple issues, like tool efficiency and unexplainable behavior of some blocks... Having played for a while now, this mod will probably address most problems you have encountered. If you do not know code, feel free to [create an issue](https://github.com/2zqa/AnnoyanceFix/issues/new).
+Thanks for considering contributing! To get started:
 
 1. Download 1.7.3-LTS (MCP fork): `https://github.com/ModificationStation/1.7.3-LTS/`
 2. Fork this repository
