@@ -14,8 +14,8 @@ public class mod_AnnoyanceFix extends BaseMod {
 		// Fix axe effectiveness
 		addEffectiveTools(new Item[] { Item.axeDiamond, Item.axeGold, Item.axeSteel, Item.axeStone, Item.axeWood },
 				new Block[] { Block.workbench, Block.stairCompactPlanks, Block.fence, Block.doorWood, Block.ladder,
-						Block.signPost, Block.signWall, Block.pumpkin, Block.pumpkinLantern,
-						Block.pressurePlatePlanks, Block.jukebox, Block.musicBlock });
+						Block.signPost, Block.signWall, Block.pumpkin, Block.pumpkinLantern, Block.pressurePlatePlanks,
+						Block.jukebox, Block.musicBlock });
 
 		// Fix pickaxe effectiveness
 		addEffectiveTools(

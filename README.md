@@ -5,8 +5,8 @@ _Now using modloader!_
 
 List of fixes:
 
-- Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors, rails, dispensers and stone pressure plates
-- Axes are now effective against: crafting tables, wooden stairs, fences, wooden doors, ladders, signs, pumpkins and wooden pressure plates
+- Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors, rails, dispensers, stone pressure plates and monster spawners
+- Axes are now effective against: crafting tables, wooden stairs, fences, wooden doors, ladders, signs, pumpkins, wooden pressure plates, jukeboxes and noteblocks
 - Fences are now placeable in air
 - Stairs now drop themselves
 
@@ -20,7 +20,7 @@ List of fixes:
 
 ## Feedback
 
-The aim of this mod is to fix simple issues, like tool efficiency and unexplainable/unapologetic behavior of some blocks. I.e. bugfixes, not new features! Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/gitpoint/git-point/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
+The aim of this mod is to fix simple issues, like tool efficiency and unexplainable/unapologetic behavior of some blocks. I.e. bugfixes, not new features! Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/2zqa/AnnoyanceFix/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
 
 ## Contributing
 Thanks for considering contributing! To get started:
