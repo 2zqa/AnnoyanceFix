@@ -3,12 +3,13 @@ _Now using modloader!_
 
 ![image](https://i.imgur.com/TyufQHz.jpg)
 
-List of fixes:
+The aim of this mod is to fix (major) annoyances or backport useful features that do not affect gameplay. List of fixes:
 
 - Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors, rails, dispensers, stone pressure plates and monster spawners
 - Axes are now effective against: crafting tables, wooden stairs, fences, wooden doors, ladders, signs, pumpkins, wooden pressure plates, jukeboxes and noteblocks
 - Fences are now placeable in air
 - Stairs now drop themselves
+- Pick block now works for items that are in the player's inventory, but not in their hotbar
 
 ## Installation using MultiMC
 
@@ -20,7 +21,7 @@ List of fixes:
 
 ## Feedback
 
-The aim of this mod is to fix simple issues, like tool efficiency and unexplainable/unapologetic behavior of some blocks. I.e. bugfixes, not new features! Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/2zqa/AnnoyanceFix/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
+Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/2zqa/AnnoyanceFix/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
 
 ## Contributing
 Thanks for considering contributing! To get started:
