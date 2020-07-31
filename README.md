@@ -21,7 +21,7 @@ The aim of this mod is to fix (major) annoyances or backport useful features tha
 
 ## Feedback
 
-Got any suggestions on what I should add next? Feel free to let me know by [creating issue](https://github.com/2zqa/AnnoyanceFix/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
+Got any suggestions on what I should add next? Feel free to let me know by [creating an issue](https://github.com/2zqa/AnnoyanceFix/issues/new). Know how to code and want to do it yourself? Then look below on how to get started.
 
 ## Contributing
 Thanks for considering contributing! To get started:
@@ -30,12 +30,15 @@ Thanks for considering contributing! To get started:
 2. Fork this repository
 3. Clone your own fork: `git clone https://github.com/<your_username>/AnnoyanceFix.git`
 4. Run setup from 1.7.3-LTS
-5. Add modloader classes to bin/minecraft.jar
-6. Run decompile script
+5. Add modloader classes to jars/bin/minecraft.jar
+6. Run decompile script with fixed class for Modloader
 7. Run updatemd5 script
 8. Copy all files _from_ 1.7.3-LTS _to_ the AnnoyanceFix folder, without overwriting anything
-9. Start modding :)
-10. Create a pull request when done
+9. Fix the errors in Eclipse (mostly replacing int with boolean)
+   * For example: `int j = this.furnaceBurnTime > 0;` to `boolean j = this.furnaceBurnTime > 0;`
+   * Remove the int in `int j2 = 4;` in RenderBlocks.java
+   * Warnings can be ignored
+10. Start modding :)
+11. Create a pull request when done
 
 TIP: Use the createmod script to automatically recompile, reobfuscate and create a zip for the mod.
-
