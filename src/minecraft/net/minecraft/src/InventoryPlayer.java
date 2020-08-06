@@ -67,7 +67,10 @@ public class InventoryPlayer implements IInventory {
 				if (firstEmptyStack < 9 && firstEmptyStack >= 0) {
 					this.currentItem = firstEmptyStack;
 				} else {
-					// No room in hotbar; aborting
+					// No room in hotbar, swap items
+					ItemStack tempItem = mainInventory[currentItem];
+					mainInventory[currentItem] = mainInventory[itemLocation];
+					mainInventory[itemLocation] = tempItem;
 					return;
 				}
 			}
