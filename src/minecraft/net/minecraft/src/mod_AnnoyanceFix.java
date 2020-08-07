@@ -23,8 +23,7 @@ public class mod_AnnoyanceFix extends BaseMod {
 						Item.pickaxeWood },
 				new Block[] { Block.stoneOvenActive, Block.stoneOvenIdle, Block.stairCompactCobblestone, Block.brick,
 						Block.oreRedstone, Block.oreRedstoneGlowing, Block.doorSteel, Block.rail, Block.railDetector,
-						Block.railPowered, Block.dispenser, Block.pressurePlateStone, Block.mobSpawner,
-						Block.obsidian });
+						Block.railPowered, Block.dispenser, Block.pressurePlateStone, Block.mobSpawner, });
 
 	}
 
