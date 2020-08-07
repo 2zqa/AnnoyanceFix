@@ -52,6 +52,11 @@ public class InventoryPlayer implements IInventory {
      * @param var2 unused
      */
 	public void setCurrentItem(int itemID, boolean var2) {
+		// These if-statements should be in the Minecraft.java class, but we won't edit that class because it's not necessary
+		if (itemID == Block.redstoneWire.blockID) {
+			itemID = Item.redstone.shiftedIndex;
+        }
+		
 		int itemLocation = this.getInventorySlotContainItem(itemID);
 		if (itemLocation == -1) {
 			// Item is not in inventory

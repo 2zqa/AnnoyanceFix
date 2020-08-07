@@ -32,7 +32,7 @@ public class mod_AnnoyanceFix extends BaseMod {
 	 * Makes specified blocks break faster using specified tools
 	 * 
 	 * @param effectiveTools   tools to be effective against all vulnerableBlocks
-	 * @param vulnerableBlocks blocks that should be broken faster using speficied
+	 * @param vulnerableBlocks blocks that should be broken faster using specified
 	 *                         tools
 	 */
 	public void addEffectiveTools(Item[] effectiveTools, Block[] vulnerableBlocks) {
