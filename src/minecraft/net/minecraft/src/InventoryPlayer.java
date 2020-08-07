@@ -56,6 +56,21 @@ public class InventoryPlayer implements IInventory {
 		if (itemID == Block.redstoneWire.blockID) {
 			itemID = Item.redstone.shiftedIndex;
         }
+		if (itemID == Block.doorWood.blockID) {
+			itemID = Item.doorWood.shiftedIndex;
+        }
+		if (itemID == Block.doorSteel.blockID) {
+			itemID = Item.doorSteel.shiftedIndex;
+        }
+		if (itemID == Block.signPost.blockID || itemID == Block.signWall.blockID) {
+			itemID = Item.sign.shiftedIndex;
+        }
+		if (itemID == Block.crops.blockID) {
+			itemID = Item.seeds.shiftedIndex;
+        }
+		if (itemID == Block.redstoneRepeaterIdle.blockID || itemID == Block.redstoneRepeaterActive.blockID) {
+			itemID = Item.redstoneRepeater.shiftedIndex;
+        }
 		
 		int itemLocation = this.getInventorySlotContainItem(itemID);
 		if (itemLocation == -1) {
