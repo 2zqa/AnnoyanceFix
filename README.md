@@ -10,6 +10,7 @@ The aim of this mod is to fix (major) annoyances or backport useful features tha
 - Fences are now placeable in air
 - Stairs now drop themselves
 - Pick block now works for items that are in the player's inventory, but not in their hotbar
+- Pick block now also works for: wooden doors, iron doors, signs, crops, redstone repeaters and redstone wire
 
 ## Installation using MultiMC
 
