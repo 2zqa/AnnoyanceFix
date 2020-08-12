@@ -3,14 +3,18 @@ _Now using modloader!_
 
 ![image](https://i.imgur.com/TyufQHz.jpg)
 
+Mod review by Modification Station/The Zyga (thanks!): https://www.youtube.com/watch?v=m8lX9jv9lhI
+
 The aim of this mod is to fix (major) annoyances or backport useful features that do not affect gameplay. List of fixes:
 
 - Pickaxes are now effective against: furnaces, cobblestone stairs, bricks, redstone ore, iron doors, rails, dispensers, stone pressure plates and monster spawners
 - Axes are now effective against: crafting tables, wooden stairs, fences, wooden doors, ladders, signs, pumpkins, wooden pressure plates, jukeboxes and noteblocks
 - Fences are now placeable in air
 - Stairs now drop themselves
-- Pick block now works for items that are in the player's inventory, but not in their hotbar
-- Pick block now also works for: wooden doors, iron doors, signs, crops, redstone repeaters and redstone wire
+- Pick block (middle mouse button click) now works for blocks that are in the player's inventory, but not in their hotbar
+- Pick block now also works on: wooden doors, iron doors, signs, crops, redstone repeaters and redstone wire
+
+To use pick block: Look at a block and click your scrollwheel. It selects to the block currently looked at (if you have it).
 
 ## Installation using MultiMC
 
