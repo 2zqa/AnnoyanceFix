@@ -57,6 +57,8 @@ public class InventoryPlayer implements IInventory {
 			Entity entityLookedAt = ModLoader.getMinecraftInstance().objectMouseOver.entityHit;
 			if (entityLookedAt instanceof EntityPainting) {
 				itemID = Item.painting.shiftedIndex;
+			} else if (entityLookedAt instanceof EntityBoat) {
+				itemID = Item.boat.shiftedIndex;
 			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartEmpty).minecartType) {
 				itemID = Item.minecartEmpty.shiftedIndex;
 			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartCrate).minecartType) {
@@ -66,7 +68,6 @@ public class InventoryPlayer implements IInventory {
 			}
 		}
 		
-		// These if-statements should be in the Minecraft.java class, but we won't edit that class because it's not necessary
 		if (itemID == Block.redstoneWire.blockID) {
 			itemID = Item.redstone.shiftedIndex;
         } else if (itemID == Block.doorWood.blockID) {
