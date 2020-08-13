@@ -19,6 +19,7 @@ src/minecraft/net/minecraft/src/*.java
 !src/minecraft/net/minecraft/src/BlockFence.java
 !src/minecraft/net/minecraft/src/BlockStairs.java
 !src/minecraft/net/minecraft/src/InventoryPlayer.java
+!src/minecraft/net/minecraft/src/EntityBoat.java
 !src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
 AnnoyanceFix.zip
 
