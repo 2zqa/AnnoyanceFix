@@ -52,23 +52,32 @@ public class InventoryPlayer implements IInventory {
      * @param var2 unused
      */
 	public void setCurrentItem(int itemID, boolean var2) {
+		// Sorry for doing this here, it's sadly the way I thought of doing it without editing Minecraft.java!
+		if (ModLoader.getMinecraftInstance().objectMouseOver.typeOfHit == EnumMovingObjectType.ENTITY) {
+			Entity entityLookedAt = ModLoader.getMinecraftInstance().objectMouseOver.entityHit;
+			if (entityLookedAt instanceof EntityPainting) {
+				itemID = Item.painting.shiftedIndex;
+			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartEmpty).minecartType) {
+				itemID = Item.minecartEmpty.shiftedIndex;
+			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartCrate).minecartType) {
+				itemID = Item.minecartCrate.shiftedIndex;
+			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartPowered).minecartType) {
+				itemID = Item.minecartPowered.shiftedIndex;
+			}
+		}
+		
 		// These if-statements should be in the Minecraft.java class, but we won't edit that class because it's not necessary
 		if (itemID == Block.redstoneWire.blockID) {
 			itemID = Item.redstone.shiftedIndex;
-        }
-		if (itemID == Block.doorWood.blockID) {
+        } else if (itemID == Block.doorWood.blockID) {
 			itemID = Item.doorWood.shiftedIndex;
-        }
-		if (itemID == Block.doorSteel.blockID) {
+        } else if (itemID == Block.doorSteel.blockID) {
 			itemID = Item.doorSteel.shiftedIndex;
-        }
-		if (itemID == Block.signPost.blockID || itemID == Block.signWall.blockID) {
+        } else if (itemID == Block.signPost.blockID || itemID == Block.signWall.blockID) {
 			itemID = Item.sign.shiftedIndex;
-        }
-		if (itemID == Block.crops.blockID) {
+        } else if (itemID == Block.crops.blockID) {
 			itemID = Item.seeds.shiftedIndex;
-        }
-		if (itemID == Block.redstoneRepeaterIdle.blockID || itemID == Block.redstoneRepeaterActive.blockID) {
+        } else if (itemID == Block.redstoneRepeaterIdle.blockID || itemID == Block.redstoneRepeaterActive.blockID) {
 			itemID = Item.redstoneRepeater.shiftedIndex;
         }
 		
