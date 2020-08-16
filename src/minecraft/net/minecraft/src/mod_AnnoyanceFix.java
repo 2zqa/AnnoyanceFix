@@ -6,7 +6,7 @@ public class mod_AnnoyanceFix extends BaseMod {
 
 	@Override
 	public String Version() {
-		return "AnnoyanceFix v1.4";
+		return "AnnoyanceFix v1.5";
 	}
 
 	@Override
