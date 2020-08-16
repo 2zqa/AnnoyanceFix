@@ -333,6 +333,11 @@ public class EntityBoat extends Entity {
         } else {
             if (!this.worldObj.multiplayerWorld) {
                 var1.mountEntity(this);
+                // If player is not riding anything after interacting with the boat, it must have unmounted
+                if(var1.ridingEntity == null) {
+                	// Compensate for floating point errors
+                	var1.setPosition(var1.posX, var1.posY+0.01f, var1.posZ);
+                }
             }
 
             return true;
