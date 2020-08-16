@@ -80,6 +80,12 @@ public class InventoryPlayer implements IInventory {
 			itemID = Item.seeds.shiftedIndex;
         } else if (itemID == Block.redstoneRepeaterIdle.blockID || itemID == Block.redstoneRepeaterActive.blockID) {
 			itemID = Item.redstoneRepeater.shiftedIndex;
+        } else if (itemID == Block.blockBed.blockID) {
+			itemID = Item.bed.shiftedIndex;
+        } else if (itemID == Block.cake.blockID) {
+			itemID = Item.cake.shiftedIndex;
+        } else if (itemID == Block.pistonExtension.blockID) {
+			itemID = Block.pistonBase.blockID;
         }
 		
 		int itemLocation = this.getInventorySlotContainItem(itemID);
