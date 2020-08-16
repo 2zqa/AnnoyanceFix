@@ -59,12 +59,15 @@ public class InventoryPlayer implements IInventory {
 				itemID = Item.painting.shiftedIndex;
 			} else if (entityLookedAt instanceof EntityBoat) {
 				itemID = Item.boat.shiftedIndex;
-			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartEmpty).minecartType) {
-				itemID = Item.minecartEmpty.shiftedIndex;
-			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartCrate).minecartType) {
-				itemID = Item.minecartCrate.shiftedIndex;
-			} else if (entityLookedAt instanceof EntityMinecart && ((EntityMinecart)entityLookedAt).minecartType == ((ItemMinecart)Item.minecartPowered).minecartType) {
-				itemID = Item.minecartPowered.shiftedIndex;
+			} else if (entityLookedAt instanceof EntityMinecart) {
+				int minecartType = ((EntityMinecart)entityLookedAt).minecartType;
+				if (minecartType == ((ItemMinecart)Item.minecartEmpty).minecartType) {
+					itemID = Item.minecartEmpty.shiftedIndex;
+				} else if (minecartType == ((ItemMinecart)Item.minecartCrate).minecartType) {
+					itemID = Item.minecartCrate.shiftedIndex;
+				} else if (minecartType == ((ItemMinecart)Item.minecartPowered).minecartType) {
+					itemID = Item.minecartPowered.shiftedIndex;
+				}
 			}
 		}
 		
