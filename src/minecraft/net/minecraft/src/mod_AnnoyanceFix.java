@@ -2,7 +2,13 @@ package net.minecraft.src;
 
 import java.lang.reflect.Field;
 
+import org.lwjgl.input.Mouse;
+
+import net.minecraft.client.Minecraft;
+
 public class mod_AnnoyanceFix extends BaseMod {
+	
+	InventoryPlayerUtils inventoryUtils;
 
 	@Override
 	public String Version() {
@@ -11,6 +17,9 @@ public class mod_AnnoyanceFix extends BaseMod {
 
 	@Override
 	public void ModsLoaded() {
+		inventoryUtils = new InventoryPlayerUtils();
+		ModLoader.SetInGameHook(this, true, false);
+		
 		// Fix axe effectiveness
 		addEffectiveTools(new Item[] { Item.axeDiamond, Item.axeGold, Item.axeSteel, Item.axeStone, Item.axeWood },
 				new Block[] { Block.workbench, Block.stairCompactPlanks, Block.fence, Block.doorWood, Block.ladder,
@@ -26,6 +35,14 @@ public class mod_AnnoyanceFix extends BaseMod {
 						Block.railPowered, Block.dispenser, Block.pressurePlateStone, Block.mobSpawner, });
 
 	}
+
+	public boolean OnTickInGame(Minecraft game) {
+		if (Mouse.getEventButton() == 2 && Mouse.getEventButtonState()) {
+			inventoryUtils.setCurrentItem(game.thePlayer, game.objectMouseOver);
+		}
+		
+        return true;
+    }
 
 	/**
 	 * Makes specified blocks break faster using specified tools
