@@ -20,7 +20,7 @@ The aim of this mod is to fix (major) annoyances or backport useful features tha
 
 To use pick block: Look at something and click your scrollwheel. If it's in your inventory, it will automatically be selected.
 
-## Installation using MultiMC
+## Installation using Prism Launcher
 
 1. Download Modloader: https://github.com/coffeenotfound/ModloaderFix-b1.7.3/releases/download/v1.0.0/ModLoader.Fix.b1.7.3-1.0.0.jar
 2. Download this mod: https://github.com/2zqa/AnnoyanceFix/releases/latest/download/AnnoyanceFix.zip
