@@ -25,7 +25,7 @@ setupwithoutapply:
 clean:
 	java -jar $(retro_mcp_bin) cleanup
 	# Clean working directory
-	rm -rf libraries AnnoyanceFix.zip $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader_bin)
+	rm -rf libraries AnnoyanceFix.zip $(retro_mcp_bin) $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader)
 
 applypatch:
 	java -jar $(retro_mcp_bin) applypatch
