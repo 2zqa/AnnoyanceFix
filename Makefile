@@ -5,7 +5,7 @@ MODLOADER_DL=https://github.com/coffeenotfound/ModloaderFix-b1.7.3/releases/down
 tmp_dir=/tmp
 wget_flags=-q --show-progress
 retro_mcp_bin=RetroMCP-Java-CLI.jar
-modloader_bin=Modloader.jar
+modloader=Modloader.jar
 modloader_extract_dir=ModLoader
 
 setup: setupwithoutapply applypatch
@@ -13,11 +13,11 @@ setup: setupwithoutapply applypatch
 download:
 	# Download RetroMCP CLI and Modloader
 	wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
-	wget $(wget_flags) -O $(tmp_dir)/$(modloader_bin) $(MODLOADER_DL)
+	wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
 
 setupwithoutapply:
 	java -jar $(retro_mcp_bin) setup b1.7.3
-	unzip -d $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader_bin)
+	unzip -d $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader)
 	zip -uj jars/minecraft.jar $(tmp_dir)/$(modloader_extract_dir)/*
 	java -jar $(retro_mcp_bin) decompile
 	java -jar $(retro_mcp_bin) updatemd5
