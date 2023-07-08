@@ -13,7 +13,7 @@ setup:
 	zip -uj $(tmpdir)/RetroMCP/jars/minecraft.jar $(tmpdir)/ModLoader/*
 	cd $(tmpdir)/RetroMCP && java -jar $(tmpdir)/RetroMCP-Java-CLI.jar decompile
 	cd $(tmpdir)/RetroMCP && java -jar $(tmpdir)/RetroMCP-Java-CLI.jar updatemd5 # Good so far
-	cp -nr $(tmpdir)/RetroMCP/minecraft/src .
+	cp -nr $(tmpdir)/RetroMCP/minecraft/src/net/minecraft/src/* src/
 
 clean:
 	cd $(tmpdir) && rm -rf RetroMCP ModLoader RetroMCP-Java-CLI.jar ModLoader.jar
