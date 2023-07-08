@@ -11,7 +11,6 @@ modloader_extract_dir=ModLoader
 setup: download decompile applypatch
 
 download:
-	# Download RetroMCP CLI and Modloader
 	wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
 	wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
 
