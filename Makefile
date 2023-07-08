@@ -24,3 +24,12 @@ clean:
 	java -jar $(retro_mcp_bin) cleanup
 	# Clean working directory
 	rm -rf libraries $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader_bin)
+
+createpatch:
+	java -jar $(retro_mcp_bin) createpatch
+
+compile:
+	java -jar $(retro_mcp_bin) recompile
+	java -jar $(retro_mcp_bin) reobfuscate
+	rm -f AnnoyanceFix.zip
+	zip -r -j AnnoyanceFix.zip minecraft/reobf
