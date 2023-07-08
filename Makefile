@@ -8,14 +8,14 @@ retro_mcp_bin=RetroMCP-Java-CLI.jar
 modloader=Modloader.jar
 modloader_extract_dir=ModLoader
 
-setup: setupwithoutapply applypatch
+setup: download decompile applypatch
 
 download:
 	# Download RetroMCP CLI and Modloader
 	wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
 	wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
 
-setupwithoutapply:
+decompile:
 	java -jar $(retro_mcp_bin) setup b1.7.3
 	unzip -d $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader)
 	zip -uj jars/minecraft.jar $(tmp_dir)/$(modloader_extract_dir)/*
