@@ -7,7 +7,7 @@ wget_flags=-q --show-progress
 retro_mcp_bin=RetroMCP-Java-CLI.jar
 
 .PHONY: default
-default: download setup decompile applypatch
+default: download applymodloader decompile applypatch
 
 .PHONY: download
 download:
