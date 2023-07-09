@@ -41,7 +41,7 @@ applypatch:
 createpatch:
 	java -jar $(retro_mcp_bin) createpatch
 
-compile:
+$(MOD_NAME).zip:
 	java -jar $(retro_mcp_bin) recompile
 	java -jar $(retro_mcp_bin) reobfuscate
 	rm -f $(MOD_NAME).zip
