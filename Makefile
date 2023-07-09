@@ -13,8 +13,8 @@ default: download setup decompile applypatch
 
 .PHONY: download
 download:
-	wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
-	wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
+	test -f $(retro_mcp_bin) || wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
+	test -f $(tmp_dir)/$(modloader) || wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
 
 .PHONY: setup
 setup:
