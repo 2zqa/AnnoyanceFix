@@ -1,6 +1,6 @@
 RETRO_MCP_DL=https://github.com/MCPHackers/RetroMCP-Java/releases/latest/download/RetroMCP-Java-CLI.jar
 MODLOADER_DL=https://github.com/coffeenotfound/ModloaderFix-b1.7.3/releases/download/v1.0.0/ModLoader.Fix.b1.7.3-1.0.0.jar
- MOD_NAME=AnnoyanceFix
+MOD_NAME=AnnoyanceFix
 
 # Internal variables
 tmp_dir=/tmp
