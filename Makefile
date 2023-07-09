@@ -35,7 +35,7 @@ clean:
 applypatch:
 	java -jar $(retro_mcp_bin) applypatch
 
-.PHONY: createpatch
+.PHONY: patch
 patch:
 	java -jar $(retro_mcp_bin) createpatch
 
