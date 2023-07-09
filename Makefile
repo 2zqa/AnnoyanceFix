@@ -15,10 +15,10 @@ default: download setup decompile applypatch
 download:
 	test -f $(retro_mcp_bin) || wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
 	test -f $(tmp_dir)/$(modloader) || wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
+	java -jar $(retro_mcp_bin) setup b1.7.3
 
 .PHONY: setup
 setup:
-	java -jar $(retro_mcp_bin) setup b1.7.3
 	unzip -d $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader)
 	zip -uj jars/minecraft.jar $(tmp_dir)/$(modloader_extract_dir)/*
 
