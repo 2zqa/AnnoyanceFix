@@ -38,7 +38,7 @@ applypatch:
 	java -jar $(retro_mcp_bin) applypatch
 
 .PHONY: createpatch
-createpatch:
+patch:
 	java -jar $(retro_mcp_bin) createpatch
 
 $(MOD_NAME).zip:
