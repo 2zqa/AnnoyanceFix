@@ -15,10 +15,12 @@ download:
 	wget $(wget_flags) -O $(retro_mcp_bin) $(RETRO_MCP_DL)
 	wget $(wget_flags) -O $(tmp_dir)/$(modloader) $(MODLOADER_DL)
 
-decompile:
+setup:
 	java -jar $(retro_mcp_bin) setup b1.7.3
 	unzip -d $(tmp_dir)/$(modloader_extract_dir) $(tmp_dir)/$(modloader)
 	zip -uj jars/minecraft.jar $(tmp_dir)/$(modloader_extract_dir)/*
+
+decompile:
 	java -jar $(retro_mcp_bin) decompile
 	java -jar $(retro_mcp_bin) updatemd5
 
