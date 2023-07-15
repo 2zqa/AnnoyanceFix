@@ -17,8 +17,11 @@ download:
 
 .PHONY: applymodloader
 applymodloader:
-	unzip -d $(tmp_dir)/modloader $(tmp_dir)/modloader.jar
-	jar -uf jars/minecraft.jar $(tmp_dir)/modloader/*
+	mkdir $(tmp_dir)/modloader
+	cd $(tmp_dir)/modloader && jar -xvf ../modloader.jar
+	mv jars/minecraft.jar $(tmp_dir)/modloader
+	cd $(tmp_dir)/modloader && jar -uf minecraft.jar *
+	mv $(tmp_dir)/modloader/minecraft.jar jars/
 
 .PHONY: decompile
 decompile:
