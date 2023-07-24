@@ -23,6 +23,11 @@ src/minecraft/net/minecraft/src/*.java
 !src/minecraft/net/minecraft/src/mod_AnnoyanceFix.java
 AnnoyanceFix.zip
 
+# My changes
+!src/minecraft/net/minecraft/src/Block.java
+!src/minecraft/net/minecraft/src/BlockPortal.java
+!src/minecraft/net/minecraft/src/EntityRenderer.java
+
 # Allow server.properties
 !jars/server.properties
 
