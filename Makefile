@@ -42,6 +42,7 @@ applypatch:
 patch:
 	java -jar $(retro_mcp_bin) createpatch
 
+.PHONY: $(MOD_NAME).zip
 $(MOD_NAME).zip:
 	java -jar $(retro_mcp_bin) recompile
 	java -jar $(retro_mcp_bin) reobfuscate
