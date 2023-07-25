@@ -5,9 +5,18 @@ MOD_NAME=AnnoyanceFix
 tmp_dir=/tmp
 wget_flags=-q --show-progress
 retro_mcp_bin=RetroMCP-Java-CLI.jar
+vscode_config='{ \
+    "java.project.sourcePaths": ["src"], \
+    "java.project.referencedLibraries": [ \
+        "../libraries/**/*.jar" \
+    ] \
+}'
+
 
 .PHONY: default
 default: download applymodloader decompile applypatch
+
+# RetroMCP
 
 .PHONY: download
 download:
@@ -48,3 +57,15 @@ $(MOD_NAME).zip:
 	java -jar $(retro_mcp_bin) reobfuscate
 	rm -f $(MOD_NAME).zip
 	zip -r -j $(MOD_NAME).zip minecraft/reobf
+
+# VSCode
+
+.PHONY: vscode/setup
+vscode/setup:
+	rm minecraft/.project
+	mkdir minecraft/.vscode
+	echo $(vscode_config) > minecraft/.vscode/settings.json
+
+.PHONY: vscode/run
+vscode/run:
+	code minecraft
