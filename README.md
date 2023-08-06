@@ -2,7 +2,7 @@
 
 _Now using modloader!_
 
-![image](https://i.imgur.com/TyufQHz.jpg)
+![modloader-banner](https://github.com/2zqa/AnnoyanceFix/assets/25235249/9ea27b70-5396-4b68-8bdf-9e044b2acfaf)
 
 Mod review of v1.4 by Modification Station/The Zyga (thanks!): https://www.youtube.com/watch?v=m8lX9jv9lhI
 
