@@ -4,7 +4,11 @@ _Now using modloader!_
 
 ![image](https://i.imgur.com/TyufQHz.jpg)
 
-Mod review of v1.4 by Modification Station/The Zyga (thanks!): https://www.youtube.com/watch?v=m8lX9jv9lhI
+Mod review of v1.4 by Modification Station/The Zyga (outdated): https://www.youtube.com/watch?v=m8lX9jv9lhI
+
+Also included in the Beta Unleashed Modpack by no_mic_. Trailer: https://www.youtube.com/watch?v=RSLuGK0yHrw
+
+## Description
 
 The aim of this mod is to fix (major) annoyances or backport useful features that do not affect gameplay. List of fixes:
 
