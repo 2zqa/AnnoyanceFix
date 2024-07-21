@@ -1,0 +1,287 @@
+--- /dev/null
++++ net/minecraft/src/mod_AnnoyanceFix.java
+@@ -1,0 +1,82 @@
++package net.minecraft.src;
++
++import java.lang.reflect.Field;
++
++import org.lwjgl.input.Mouse;
++
++import net.minecraft.client.Minecraft;
++
++public class mod_AnnoyanceFix extends BaseMod {
++	
++	InventoryPlayerUtils inventoryUtils;
++
++	@Override
++	public String Version() {
++		return "AnnoyanceFix v1.5";
++	}
++
++	@Override
++	public void ModsLoaded() {
++		inventoryUtils = new InventoryPlayerUtils();
++		ModLoader.SetInGameHook(this, true, false);
++		
++		// Fix axe effectiveness
++		addEffectiveTools(new Item[] { Item.axeDiamond, Item.axeGold, Item.axeSteel, Item.axeStone, Item.axeWood },
++				new Block[] { Block.workbench, Block.stairCompactPlanks, Block.fence, Block.doorWood, Block.ladder,
++						Block.signPost, Block.signWall, Block.pumpkin, Block.pumpkinLantern, Block.pressurePlatePlanks,
++						Block.jukebox, Block.musicBlock });
++
++		// Fix pickaxe effectiveness
++		addEffectiveTools(
++				new Item[] { Item.pickaxeDiamond, Item.pickaxeGold, Item.pickaxeSteel, Item.pickaxeStone,
++						Item.pickaxeWood },
++				new Block[] { Block.stoneOvenActive, Block.stoneOvenIdle, Block.stairCompactCobblestone, Block.brick,
++						Block.oreRedstone, Block.oreRedstoneGlowing, Block.doorSteel, Block.rail, Block.railDetector,
++						Block.railPowered, Block.dispenser, Block.pressurePlateStone, Block.mobSpawner, });
++
++	}
++
++	public boolean OnTickInGame(Minecraft game) {
++		if (Mouse.getEventButton() == 2 && Mouse.getEventButtonState()) {
++			inventoryUtils.setCurrentItem(game.thePlayer, game.objectMouseOver);
++		}
++		
++        return true;
++    }
++
++	/**
++	 * Makes specified blocks break faster using specified tools
++	 * 
++	 * @param effectiveTools   tools to be effective against all vulnerableBlocks
++	 * @param vulnerableBlocks blocks that should be broken faster using specified
++	 *                         tools
++	 */
++	public void addEffectiveTools(Item[] effectiveTools, Block[] vulnerableBlocks) {
++		try {
++			// Get the blocksEffectiveAgainst field
++			Field blocksEffectiveAgainstField = ItemTool.class.getDeclaredFields()[0];
++			blocksEffectiveAgainstField.setAccessible(true);
++
++			// Make each tool effective against all specified blocks
++			for (Item tool : effectiveTools) {
++				Block[] blocksEffectiveAgainstOriginal = (Block[]) blocksEffectiveAgainstField.get(tool);
++
++				Block[] blocksEffectiveAgainst = new Block[blocksEffectiveAgainstOriginal.length
++						+ vulnerableBlocks.length];
++
++				// Add original effective block list to new array
++				System.arraycopy(blocksEffectiveAgainstOriginal, 0, blocksEffectiveAgainst, 0,
++						blocksEffectiveAgainstOriginal.length);
++
++				// Add users' effective blocks to the list
++				System.arraycopy(vulnerableBlocks, 0, blocksEffectiveAgainst, blocksEffectiveAgainstOriginal.length,
++						vulnerableBlocks.length);
++
++				blocksEffectiveAgainstField.set(tool, blocksEffectiveAgainst);
++			}
++
++		} catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
++			e.printStackTrace();
++		}
++	}
++}
+--- net/minecraft/src/EntityBoat.java
++++ net/minecraft/src/EntityBoat.java
+@@ -71,14 +71,8 @@
+ 					this.riddenByEntity.mountEntity(this);
+ 				}
+ 
+-				int var3;
+-				for(var3 = 0; var3 < 3; ++var3) {
+-					this.dropItemWithOffset(Block.planks.blockID, 1, 0.0F);
+-				}
+-
+-				for(var3 = 0; var3 < 2; ++var3) {
+-					this.dropItemWithOffset(Item.stick.shiftedIndex, 1, 0.0F);
+-				}
++				// Drop boat instead of sticks and planks
++                this.dropItemWithOffset(Item.boat.shiftedIndex, 1, 0.0F);
+ 
+ 				this.setEntityDead();
+ 			}
+@@ -243,24 +237,24 @@
+ 				}
+ 			}
+ 
+-			if(this.isCollidedHorizontally && var6 > 0.15D) {
+-				if(!this.worldObj.multiplayerWorld) {
+-					this.setEntityDead();
+-
+-					int var22;
+-					for(var22 = 0; var22 < 3; ++var22) {
+-						this.dropItemWithOffset(Block.planks.blockID, 1, 0.0F);
+-					}
+-
+-					for(var22 = 0; var22 < 2; ++var22) {
+-						this.dropItemWithOffset(Item.stick.shiftedIndex, 1, 0.0F);
+-					}
+-				}
+-			} else {
++			// if(this.isCollidedHorizontally && var6 > 0.15D) {
++			// 	if(!this.worldObj.multiplayerWorld) {
++			// 		this.setEntityDead();
++
++			// 		int var22;
++			// 		for(var22 = 0; var22 < 3; ++var22) {
++			// 			this.dropItemWithOffset(Block.planks.blockID, 1, 0.0F);
++			// 		}
++
++			// 		for(var22 = 0; var22 < 2; ++var22) {
++			// 			this.dropItemWithOffset(Item.stick.shiftedIndex, 1, 0.0F);
++			// 		}
++			// 	}
++			// } else {
+ 				this.motionX *= (double)0.99F;
+ 				this.motionY *= (double)0.95F;
+ 				this.motionZ *= (double)0.99F;
+-			}
++			// }
+ 
+ 			this.rotationPitch = 0.0F;
+ 			var8 = (double)this.rotationYaw;
+--- net/minecraft/src/BlockFence.java
++++ net/minecraft/src/BlockFence.java
+@@ -5,9 +5,9 @@
+ 		super(var1, var2, Material.wood);
+ 	}
+ 
+-	public boolean canPlaceBlockAt(World var1, int var2, int var3, int var4) {
+-		return var1.getBlockId(var2, var3 - 1, var4) == this.blockID ? true : (!var1.getBlockMaterial(var2, var3 - 1, var4).isSolid() ? false : super.canPlaceBlockAt(var1, var2, var3, var4));
+-	}
++	// public boolean canPlaceBlockAt(World var1, int var2, int var3, int var4) {
++	// 	return var1.getBlockId(var2, var3 - 1, var4) == this.blockID ? true : (!var1.getBlockMaterial(var2, var3 - 1, var4).isSolid() ? false : super.canPlaceBlockAt(var1, var2, var3, var4));
++	// }
+ 
+ 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4) {
+ 		return AxisAlignedBB.getBoundingBoxFromPool((double)var2, (double)var3, (double)var4, (double)(var2 + 1), (double)((float)var3 + 1.5F), (double)(var4 + 1));
+--- net/minecraft/src/BlockStairs.java
++++ net/minecraft/src/BlockStairs.java
+@@ -74,9 +74,9 @@
+ 		this.modelBlock.onBlockClicked(var1, var2, var3, var4, var5);
+ 	}
+ 
+-	public void onBlockDestroyedByPlayer(World var1, int var2, int var3, int var4, int var5) {
+-		this.modelBlock.onBlockDestroyedByPlayer(var1, var2, var3, var4, var5);
+-	}
++	// public void onBlockDestroyedByPlayer(World var1, int var2, int var3, int var4, int var5) {
++	// 	this.modelBlock.onBlockDestroyedByPlayer(var1, var2, var3, var4, var5);
++	// }
+ 
+ 	public float getBlockBrightness(IBlockAccess var1, int var2, int var3, int var4) {
+ 		return this.modelBlock.getBlockBrightness(var1, var2, var3, var4);
+--- /dev/null
++++ net/minecraft/src/InventoryPlayerUtils.java
+@@ -1,0 +1,110 @@
++package net.minecraft.src;
++
++public class InventoryPlayerUtils {
++
++	public void setCurrentItem(EntityPlayerSP player, MovingObjectPosition hoveredObject) {
++		int itemID = 0;
++		int itemDamage = 0;
++		World world = player.worldObj;
++		
++		if (hoveredObject.typeOfHit == EnumMovingObjectType.ENTITY) {
++			Entity entityLookedAt = hoveredObject.entityHit;
++			if (entityLookedAt instanceof EntityPainting) {
++				itemID = Item.painting.shiftedIndex;
++			} else if (entityLookedAt instanceof EntityBoat) {
++				itemID = Item.boat.shiftedIndex;
++			} else if (entityLookedAt instanceof EntityMinecart) {
++				int minecartType = ((EntityMinecart)entityLookedAt).minecartType;
++				if (minecartType == ((ItemMinecart)Item.minecartEmpty).minecartType) {
++					itemID = Item.minecartEmpty.shiftedIndex;
++				} else if (minecartType == ((ItemMinecart)Item.minecartCrate).minecartType) {
++					itemID = Item.minecartCrate.shiftedIndex;
++				} else if (minecartType == ((ItemMinecart)Item.minecartPowered).minecartType) {
++					itemID = Item.minecartPowered.shiftedIndex;
++				}
++			}
++		} else if (hoveredObject.typeOfHit == EnumMovingObjectType.TILE) {
++			itemID = world.getBlockId(hoveredObject.blockX, hoveredObject.blockY, hoveredObject.blockZ);
++			
++			
++			//TODO: find right method for block damage value (e.g. for wool/cloth)
++			itemDamage = world.getBlockMetadata(hoveredObject.blockX, hoveredObject.blockY, hoveredObject.blockZ);
++			
++			if (itemID == Block.redstoneWire.blockID) {
++				itemID = Item.redstone.shiftedIndex;
++	        } else if (itemID == Block.grass.blockID) {
++				itemID = Block.dirt.blockID;
++	        } else if (itemID == Block.stairDouble.blockID) {
++				itemID = Block.stairSingle.blockID;
++	        } else if (itemID == Block.doorWood.blockID) {
++				itemID = Item.doorWood.shiftedIndex;
++	        } else if (itemID == Block.doorSteel.blockID) {
++				itemID = Item.doorSteel.shiftedIndex;
++	        } else if (itemID == Block.signPost.blockID || itemID == Block.signWall.blockID) {
++				itemID = Item.sign.shiftedIndex;
++	        } else if (itemID == Block.crops.blockID) {
++				itemID = Item.seeds.shiftedIndex;
++	        } else if (itemID == Block.redstoneRepeaterIdle.blockID || itemID == Block.redstoneRepeaterActive.blockID) {
++				itemID = Item.redstoneRepeater.shiftedIndex;
++	        } else if (itemID == Block.blockBed.blockID) {
++				itemID = Item.bed.shiftedIndex;
++	        } else if (itemID == Block.cake.blockID) {
++				itemID = Item.cake.shiftedIndex;
++	        } else if (itemID == Block.pistonExtension.blockID) {
++				itemID = Block.pistonBase.blockID;
++	        }
++		}
++		
++		int itemLocation = this.getInventorySlotContainItem(itemID, itemDamage, player);
++		if (itemLocation == -1) {
++			// Item is not in inventory
++			return;
++		}
++
++		// Check if item is in hotbar
++		if (itemLocation < 9) {
++			player.inventory.currentItem = itemLocation;
++		} else {
++			if (getCurrentItem(player) != null) {
++				int firstEmptyStack = getFirstEmptyStack(player);
++				if (firstEmptyStack < 9 && firstEmptyStack >= 0) {
++					player.inventory.currentItem = firstEmptyStack;
++				} else {
++					// No room in hotbar, swap items
++					ItemStack tempItem = player.inventory.mainInventory[player.inventory.currentItem];
++					player.inventory.mainInventory[player.inventory.currentItem] = player.inventory.mainInventory[itemLocation];
++					player.inventory.mainInventory[itemLocation] = tempItem;
++					return;
++				}
++			}
++
++			// Move item to selected hotbar slot
++			player.inventory.mainInventory[player.inventory.currentItem] = player.inventory.mainInventory[itemLocation];
++			player.inventory.mainInventory[itemLocation] = null;
++		}
++	}
++	
++    private int getFirstEmptyStack(EntityPlayerSP player) {
++        for(int var1 = 0; var1 < player.inventory.mainInventory.length; ++var1) {
++            if (player.inventory.mainInventory[var1] == null) {
++                return var1;
++            }
++        }
++
++        return -1;
++    }
++    
++    public ItemStack getCurrentItem(EntityPlayerSP player) {
++        return player.inventory.currentItem < 9 && player.inventory.currentItem >= 0 ? player.inventory.mainInventory[player.inventory.currentItem] : null;
++    }
++	
++    public int getInventorySlotContainItem(int itemID, int itemDamage, EntityPlayerSP player) {
++        for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
++            if (player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].itemID == itemID && player.inventory.mainInventory[i].getItemDamage() == itemDamage) {
++                return i;
++            }
++        }
++
++        return -1;
++    }
++}

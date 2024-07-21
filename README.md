@@ -2,7 +2,7 @@
 
 _Now using modloader!_
 
-![image](https://i.imgur.com/TyufQHz.jpg)
+![modloader-banner](https://github.com/2zqa/AnnoyanceFix/assets/25235249/9ea27b70-5396-4b68-8bdf-9e044b2acfaf)
 
 Mod review of v1.4 by Modification Station/The Zyga (outdated): https://www.youtube.com/watch?v=m8lX9jv9lhI
 
@@ -40,19 +40,10 @@ Got any suggestions on what I should add next? Feel free to let me know by [crea
 
 Thanks for considering contributing! To get started:
 
-1. Download 1.7.3-LTS (MCP fork): `https://github.com/ModificationStation/1.7.3-LTS/`
-2. Fork this repository
-3. Clone your own fork: `git clone https://github.com/<your_username>/AnnoyanceFix.git`
-4. Run setup from 1.7.3-LTS
-5. Add modloader classes to jars/bin/minecraft.jar
-6. Run decompile script with fixed class for Modloader
-7. Run updatemd5 script
-8. Copy all files _from_ 1.7.3-LTS _to_ the AnnoyanceFix folder, without overwriting anything
-9. Fix the errors in Eclipse (mostly replacing int with boolean)
-   * For example: `int j = this.furnaceBurnTime > 0;` to `boolean j = this.furnaceBurnTime > 0;`
-   * Remove the int in `int j2 = 4;` in RenderBlocks.java
-   * Warnings can be ignored
-10. Start modding :)
-11. Create a pull request when done
+1. Fork this repository
+2. Clone your own fork: `git clone https://github.com/<your_username>/AnnoyanceFix.git`
+3. Run `make`
+4. Start modding :)
+5. Create a pull request when done
 
-TIP: Use the createmod script to automatically recompile, reobfuscate and create a zip for the mod.
+TIP: Run `make AnnoyanceFix.zip` to automatically recompile, reobfuscate and create a zip for the mod.
